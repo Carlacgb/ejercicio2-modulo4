@@ -1,33 +1,81 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+import DoctorCard from './component/doctorCard'
+import ServiceList from './component/ServiceList';
+import AppointmentForm from './component/AppointmentForm';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [doctores, setDoctores] = useState([]);
+  const [servicios, setServicios] = useState([]);
+
+  useEffect(() => {
+
+    const doctoresData = [
+      {
+        id: 1,
+        nombre: 'Doctora 1',
+        experiencia: '5 años',
+        descripcion: 'Lorem ipsum dolor sit amet consectetur adipiscing elit, volutpat odio condimentum aliquam dignissim eget, porttitor vitae tellus nulla felis nam.',
+        especialidad: 'Medicina general'
+      },
+      {
+        id: 2,
+        nombre: 'Doctor 2',
+        experiencia: '3 años',
+        descripcion: 'Lorem ipsum dolor sit amet consectetur adipiscing elit, volutpat odio condimentum aliquam dignissim eget, porttitor vitae tellus nulla felis nam.',
+        especialidad: 'Ginecología'
+      },
+      {
+        id: 3,
+        nombre: 'Doctor 3',
+        experiencia: '6 años',
+        descripcion: 'Lorem ipsum dolor sit amet consectetur adipiscing elit, volutpat odio condimentum aliquam dignissim eget, porttitor vitae tellus nulla felis nam.',
+        especialidad: 'Cardiología'
+      },
+      {
+        id: 4,
+        nombre: 'Doctor 4',
+        experiencia: '1 años',
+        descripcion: 'Lorem ipsum dolor sit amet consectetur adipiscing elit, volutpat odio condimentum aliquam dignissim eget, porttitor vitae tellus nulla felis nam.',
+        especialidad: 'Psicología'
+      },
+      {
+        id: 5,
+        nombre: 'Doctor 5',
+        experiencia: '10 años',
+        descripcion: 'Lorem ipsum dolor sit amet consectetur adipiscing elit, volutpat odio condimentum aliquam dignissim eget, porttitor vitae tellus nulla felis nam.',
+        especialidad: 'Broncopulmonar'
+      }
+    ]
+
+    const serviciosData = ['Medicina general', 'Ginecología', 'Nutrición', 'Piscología', 'Broncopulmonar'];
+    setDoctores(doctoresData);
+    setServicios(serviciosData);
+
+  }, []);
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h3 className='p-3 mb-2 bg-info text-dark'>Nuestros Doctores</h3>
+      <section className="row">
+        {doctores.map(({ id, nombre, experiencia, descripcion, especialidad }) => (
+          <DoctorCard key={id} doctor={nombre} experiencia={experiencia} descripcion={descripcion} especialidad={especialidad} />
+        ))}
+      </section>
+
+      <h3 className='p-3 mb-2 bg-info text-dark'>Lista de servicios médico</h3>
+      <section className="grillaflex">
+        {servicios.map((servicio, index) => (
+          <ServiceList key={index} servicio={servicio} />
+        ))}
+      </section>
+
+      <h3 className='p-3 mb-2 bg-info text-dark'>Seleccione su Cita</h3>
+      <section className='container'>
+        <AppointmentForm doctores={doctores}/>
+      </section>
     </>
   )
 }

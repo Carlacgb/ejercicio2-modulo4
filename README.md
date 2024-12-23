@@ -16,6 +16,12 @@ En conclusión esto permite una renderización mucho más rápida, especialmente
 
 
 ### 2. Creación y Uso de Referencias en React
+- Se implementa callBack implementando 2 nuevas piezas de estado en citaEnviada y doctorSeleccionado en el componente App.jsx
+- Se definen dos funciones callback: handleFormSubmit y handleDoctorSelect. Estas funciones se pasarán al componente AppointmentForm como props.
+- AppointmentForm recibe tanto la lista de doctores como las funciones callback onFormSubmit y onDoctorSelect.
+- Se agrega mensajes condicionales que muestran si la cita se ha enviado correctamente y el nombre del doctor seleccionado.
+- Cuando el usuario interactúa con el AppointmentForm (envía el formulario o selecciona un doctor), el componente llama a las funciones onFormSubmit o onDoctorSelect que se le pasaron como props.
+- Estas funciones, que fueron definidas en App, se ejecutan, permitiendo que App actualice su propio estado y muestre información relevante.
 
 ### 3. Uso de Fragmentos y Contexto en ReactJS
 

@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react'
 import DoctorCard from './component/doctorCard'
 import ServiceList from './component/ServiceList';
@@ -8,6 +9,9 @@ function App() {
 
   const [doctores, setDoctores] = useState([]);
   const [servicios, setServicios] = useState([]);
+
+  const [citaEnviada, setCitaEnviada] = useState(false);
+    const [doctorSeleccionado, setDoctorSeleccionado] = useState(null);
 
   useEffect(() => {
 
@@ -55,6 +59,19 @@ function App() {
 
   }, []);
 
+    // Callback para el envío del formulario
+    const handleFormSubmit = (datosCita) => {
+      console.log("Formulario enviado", datosCita);
+      setCitaEnviada(true);
+  };
+
+  // Callback para la selección de un doctor
+  const handleDoctorSelect = (doctorId) => {
+    const selectedDoctor = doctores.find(doctor => doctor.id === doctorId);
+    setDoctorSeleccionado(selectedDoctor);
+    console.log("Doctor seleccionado:", selectedDoctor);
+};
+
 
   return (
     <>
@@ -74,7 +91,13 @@ function App() {
 
       <h3 className='p-3 mb-2 bg-info text-dark'>Seleccione su Cita</h3>
       <section className='container'>
-        <AppointmentForm doctores={doctores}/>
+        <AppointmentForm
+          doctores={doctores}
+          onFormSubmit={handleFormSubmit}
+          onDoctorSelect={handleDoctorSelect}
+        />
+           {citaEnviada && <p>La cita fue enviada correctamente.</p>}
+            {doctorSeleccionado && <p>Has seleccionado al doctor: {doctorSeleccionado.nombre}</p>}
       </section>
     </>
   )

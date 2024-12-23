@@ -24,6 +24,8 @@ En conclusión esto permite una renderización mucho más rápida, especialmente
 - Estas funciones, que fueron definidas en App, se ejecutan, permitiendo que App actualice su propio estado y muestre información relevante.
 
 ### 3. Uso de Fragmentos y Contexto en ReactJS
+- Se implementa el uso deFragmentos (<React.Fragment>) en el componente principal App.jsx.
+- 
 
 ### 4. Verificación de Tipos con PropTypes
 

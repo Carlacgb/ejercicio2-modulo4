@@ -6,6 +6,9 @@ avanzados en ReactJS. Se implementa funcionalidades avanzadas en el sistema del 
 sistema.
 
 ### 1. Manejo del DOM Virtual en ReactJS
+1. Cuando un componente de React se renderiza por primera vez, React crea una copia del DOM en memoria (el DOM Virtual).
+2. React detecta los cambios realizados en los componentes y crea un nuevo DOM virtual basado en los nuevos cambios, compara estos cambios con el anterior DOM virtual y actualiza las partes del DOM real que realmente han cambiado.
+En conclusión esto permite una renderización mucho más rápida, especialmente cuando la interfaz contiene muchos elementos dinámicos (listados, formularios). Esto significa que la aplicación se siente más fluida.
 
 ### 2. Creación y Uso de Referencias en React
 

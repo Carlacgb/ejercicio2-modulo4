@@ -25,7 +25,7 @@ En conclusión esto permite una renderización mucho más rápida, especialmente
 
 ### 3. Uso de Fragmentos y Contexto en ReactJS
 - Se implementa el uso deFragmentos (<React.Fragment>) en el componente principal App.jsx.
-- 
+- Se implementa Context para almacenar la información de doctores en el nuevo componente DoctorContext.jsx. Luego, los componentes que necesiten esa información pueden "suscribirse" a ese contexto y acceder a los datos sin necesidad de que se les pasen como props.
 
 ### 4. Verificación de Tipos con PropTypes
 

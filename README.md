@@ -16,19 +16,17 @@ En conclusión esto permite una renderización mucho más rápida, especialmente
 
 
 ### 2. Creación y Uso de Referencias en React
-- Se implementa callBack implementando 2 nuevas piezas de estado en citaEnviada y doctorSeleccionado en el componente App.jsx
-- Se definen dos funciones callback: handleFormSubmit y handleDoctorSelect. Estas funciones se pasarán al componente AppointmentForm como props.
-- AppointmentForm recibe tanto la lista de doctores como las funciones callback onFormSubmit y onDoctorSelect.
-- Se agrega mensajes condicionales que muestran si la cita se ha enviado correctamente y el nombre del doctor seleccionado.
-- Cuando el usuario interactúa con el AppointmentForm (envía el formulario o selecciona un doctor), el componente llama a las funciones onFormSubmit o onDoctorSelect que se le pasaron como props.
-- Estas funciones, que fueron definidas en App, se ejecutan, permitiendo que App actualice su propio estado y muestre información relevante.
+- Se implementa callBack y se enfoca los campos del formulario cuando el usuario esta interactuando en cada celda.
 
 ### 3. Uso de Fragmentos y Contexto en ReactJS
-- Se implementa el uso deFragmentos (<React.Fragment>) en el componente principal App.jsx.
-- Se implementa Context para almacenar la información de doctores en el nuevo componente DoctorContext.jsx. Luego, los componentes que necesiten esa información pueden "suscribirse" a ese contexto y acceder a los datos sin necesidad de que se les pasen como props.
+- Se implementa el uso deFragmentos (<React.Fragment>) en el componente principal App.jsx. 
 
 ### 4. Verificación de Tipos con PropTypes
+- Se implementa PropTypes en el componente DoctorCard. Se verifica en la consola al ingresar datos incorrectos en el arreglo de doctores que está en App.jsx
+- se intala PropTypes para implementar
 
 ### 5. Uso de Componentes de Orden Superior y Portales
+- Se crea el componente withModal, dentro de la carpeta hoc y un componente Modal.jsx dentro de la carpeta componente. Se activa al hacer click sobre cada card de doctor.
+
 
 ### 6. Optimización de Rendimiento y Profiler en ReactJS

@@ -31,3 +31,4 @@ En conclusión esto permite una renderización mucho más rápida, especialmente
 
 
 ### 6. Optimización de Rendimiento y Profiler en ReactJS
+- Se implementa en el componente principal Profiler, memo. Y se puede verificar en la consola.

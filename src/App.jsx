@@ -128,7 +128,7 @@ function RootApp() {
 
 export default App */
 
-import React, { useEffect, useState, createContext } from 'react';
+import React, { useEffect, useState, createContext, Profiler, memo } from 'react';
 import './App.css';
 import DoctorCard from './component/DoctorCard';
 import ServiceList from './component/ServiceList';
@@ -137,6 +137,10 @@ import ApoinmentForm from './component/AppointmentForm';
 // 1. Crear el Context
 const HospitalContext = createContext();
 export { HospitalContext };
+
+// Componentes memoizados
+const MemoizedDoctorCard = memo(DoctorCard);
+const MemoizedServiceList = memo(ServiceList);
 
 function App() {
   const [doctores, setDoctores] = useState([]);
@@ -215,28 +219,37 @@ function App() {
     servicios,
   };
 
+  // Callback para el Profiler
+  const onRender = (id, phase, actualDuration, baseDuration, startTime, commitTime, interactions) => {
+    console.log(`${id} phase:${phase} actualDuration:${actualDuration} baseduration:${baseDuration}`)
+};
+
   return (
     // 2. Proveer el Context
     <HospitalContext.Provider value={hospitalData}>
       <>
-        <h1>Hospital</h1>
+      <h1>Hospital</h1>
         <section className="container">
+        <Profiler id="doctorList" onRender={onRender}>
           <div className='row g-4'>
             {doctores.map(({ id, nombre, experiencia, descripcion, especialidad }) => (
-              <DoctorCard key={id} doctor={nombre} experiencia={experiencia} descripcion={descripcion} especialidad={especialidad} />
+              <MemoizedDoctorCard key={id} doctor={nombre} experiencia={experiencia} descripcion={descripcion} especialidad={especialidad} />
             )
             )}
           </div>
+        </Profiler>
         </section>
 
         <section className='container my-3'>
           <h2>Servicios Médicos</h2>
           <p>Conoce nuestra variedad de servicios médicos</p>
+          <Profiler id="serviceList" onRender={onRender}>
           <ul className="list-group">
             {servicios.map((servicio, index) => (
-              <ServiceList key={index} servicio={servicio} />
+              <MemoizedServiceList key={index} servicio={servicio} />
             ))}
           </ul>
+          </Profiler>
         </section>
 
         <section>

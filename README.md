@@ -17,6 +17,7 @@ En conclusión esto permite una renderización mucho más rápida, especialmente
 
 ### 2. Creación y Uso de Referencias en React
 - Se implementa callBack y se enfoca los campos del formulario cuando el usuario esta interactuando en cada celda.
+- Se implementa el context en el componenten principal con el HospitalContext.Provider. 
 
 ### 3. Uso de Fragmentos y Contexto en ReactJS
 - Se implementa el uso deFragmentos (<React.Fragment>) en el componente principal App.jsx. 
